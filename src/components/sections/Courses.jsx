@@ -419,6 +419,7 @@ export default function Courses() {
                 {/* CTA Action button */}
                 <Link
                   to="/contact"
+                  state={{ selectedCourse: course.title }}
                   className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-800 group-hover:border-primary dark:group-hover:border-accent group-hover:bg-primary dark:group-hover:bg-accent group-hover:text-white transition-all duration-300 text-slate-700 dark:text-slate-355"
                 >
                   Enroll Now

@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
 
 export default function Contact() {
+  const location = useLocation();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    course: '',
+    course: location.state?.selectedCourse || '',
     message: '',
   });
+
+  useEffect(() => {
+    if (location.state?.selectedCourse) {
+      setFormData((prev) => ({
+        ...prev,
+        course: location.state.selectedCourse
+      }));
+    }
+  }, [location.state]);
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,7 +57,7 @@ export default function Contact() {
   const validate = () => {
     const tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = 'Name is required';
-    
+
     if (!formData.email.trim()) {
       tempErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -59,7 +71,6 @@ export default function Contact() {
     }
 
     if (!formData.course) tempErrors.course = 'Please select a course';
-    if (!formData.message.trim()) tempErrors.message = 'Message is required';
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -75,6 +86,22 @@ export default function Contact() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
+      
+      // WhatsApp Redirect
+      let whatsappText = `Hello TEKIBAG! I would like to make an inquiry.\n\n` +
+        `*Name:* ${formData.name}\n` +
+        `*Email:* ${formData.email}\n` +
+        `*Phone:* ${formData.phone}\n` +
+        `*Course:* ${formData.course}`;
+      
+      if (formData.message && formData.message.trim()) {
+        whatsappText += `\n*Message:* ${formData.message}`;
+      }
+      
+      const encodedText = encodeURIComponent(whatsappText);
+      const whatsappUrl = `https://wa.me/917793972779?text=${encodedText}`;
+      window.open(whatsappUrl, '_blank');
+
       setFormData({
         name: '',
         email: '',
@@ -89,13 +116,13 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
-      
+
       {/* Background radial gradient */}
       <div className="absolute right-[-10%] top-[20%] w-[35vw] h-[35vw] rounded-full bg-primary/5 dark:bg-primary/5 blur-[120px] pointer-events-none" />
       <div className="absolute left-[-10%] bottom-[10%] w-[35vw] h-[35vw] rounded-full bg-accent/5 dark:bg-accent/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Title Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 px-3.5 py-1.5 rounded-full">
@@ -110,7 +137,7 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          
+
           {/* Left Column: Contact details */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -124,7 +151,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-secondary dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800">
                 Contact Information
               </h3>
-              
+
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-150/50 dark:border-slate-800 text-primary dark:text-accent shadow-sm">
                   <Phone size={20} />
@@ -156,7 +183,7 @@ export default function Contact() {
                 <div>
                   <div className="text-xs font-bold text-slate-400 uppercase">Location</div>
                   <p className="text-base font-bold text-secondary dark:text-white">
-                    Bangalore, India
+                    Bengalore, India
                   </p>
                 </div>
               </div>
@@ -225,9 +252,8 @@ export default function Contact() {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${
-                          errors.name ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
-                        } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
+                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
+                          } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
                         placeholder="John Doe"
                       />
                       {errors.name && <p className="text-2xs text-red-500 font-semibold">{errors.name}</p>}
@@ -243,9 +269,8 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${
-                          errors.email ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
-                        } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
+                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
+                          } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
                         placeholder="john@example.com"
                       />
                       {errors.email && <p className="text-2xs text-red-500 font-semibold">{errors.email}</p>}
@@ -263,9 +288,8 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${
-                          errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
-                        } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
+                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
+                          } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
                         placeholder="+91 9876543210"
                       />
                       {errors.phone && <p className="text-2xs text-red-500 font-semibold">{errors.phone}</p>}
@@ -280,9 +304,8 @@ export default function Contact() {
                         name="course"
                         value={formData.course}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${
-                          errors.course ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
-                        } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
+                        className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${errors.course ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
+                          } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
                       >
                         <option value="">Select Course</option>
                         {coursesOptions.map((opt) => (
@@ -298,16 +321,15 @@ export default function Contact() {
                   {/* Message */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                      Message
+                      Message <span className="text-2xs text-slate-400 font-normal lowercase">(optional)</span>
                     </label>
                     <textarea
                       name="message"
                       rows="4"
                       value={formData.message}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${
-                        errors.message ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
-                      } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
+                      className={`w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-slate-200 dark:border-slate-800 focus:ring-primary dark:focus:ring-accent'
+                        } focus:outline-none focus:ring-2 focus:border-transparent text-sm text-secondary dark:text-white transition-all`}
                       placeholder="Hi, I would like to know about batch timings and installment options..."
                     />
                     {errors.message && <p className="text-2xs text-red-500 font-semibold">{errors.message}</p>}

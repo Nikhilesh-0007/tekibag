@@ -7,7 +7,7 @@ export default function CTA() {
   return (
     <section className="relative py-20 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Large Gradient Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}

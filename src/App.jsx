@@ -20,14 +20,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 relative font-sans selection:bg-primary/20 selection:text-primary dark:selection:bg-accent/20 dark:selection:text-accent flex flex-col justify-between">
-        
+
         {/* Reset window scroll coordinates on route transitions */}
         <ScrollToTop />
 
         {/* Global FX Overlay */}
         <ScrollProgress />
         <CursorGlow />
-        
+
         {/* Shared background vector layers */}
         <BackgroundBlobs />
 
@@ -42,7 +42,7 @@ export default function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            
+
             {/* Fallback routing */}
             <Route path="*" element={<Home />} />
           </Routes>

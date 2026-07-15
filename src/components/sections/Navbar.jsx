@@ -26,7 +26,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          
+
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center gap-2 group">
@@ -49,17 +49,15 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`text-sm font-semibold transition-colors relative group py-2 ${
-                    isActive
+                  className={`text-sm font-semibold transition-colors relative group py-2 ${isActive
                       ? 'text-primary dark:text-accent'
                       : 'text-slate-655 dark:text-slate-300 hover:text-primary dark:hover:text-accent'
-                  }`}
+                    }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
+                    className={`absolute bottom-0 left-0 h-0.5 bg-primary dark:bg-accent transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
                   />
                 </Link>
               );
@@ -122,11 +120,10 @@ export default function Navbar() {
                     key={link.name}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-3 py-2.5 text-base font-semibold rounded-tekibag transition-colors ${
-                      isActive
+                    className={`block px-3 py-2.5 text-base font-semibold rounded-tekibag transition-colors ${isActive
                         ? 'bg-primary/10 text-primary dark:bg-accent/10 dark:text-accent'
                         : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </Link>
