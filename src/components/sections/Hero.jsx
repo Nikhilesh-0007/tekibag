@@ -2,25 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen, Star, Play, Code2 } from 'lucide-react';
 
-// Counter component for animated stats
+// Counter component for animated stats that start from 0 and end at the exact same time
 function Counter({ value, suffix = '', duration = 2000 }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     let start = 0;
-    const end = parseInt(value.substring(0, 5)); // extract number
-    if (start === end) return;
+    const end = parseInt(value);
+    if (isNaN(end)) return;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
 
-    let totalMiliseconds = duration;
-    let incrementTime = Math.abs(Math.floor(totalMiliseconds / end));
-    
-    let timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, Math.max(incrementTime, 20));
+    const startTime = performance.now();
+    let animationFrameId;
 
-    return () => clearInterval(timer);
+    const updateCount = (timestamp) => {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      const currentCount = Math.floor(progress * end);
+      setCount(currentCount);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(updateCount);
+      } else {
+        setCount(end);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(updateCount);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, [value, duration]);
 
   return <span>{count}{suffix}</span>;
@@ -40,13 +54,13 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen pt-24 pb-16 flex items-center overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-      
+
       {/* Background radial gradient decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(37,99,235,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_-20%,rgba(20,184,166,0.1),transparent_50%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Text Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -98,25 +112,25 @@ export default function Hero() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-200 dark:border-slate-800/80">
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-secondary dark:text-white">
-                  <Counter value="1000" suffix="+" />
+                  <Counter value="200" suffix="+" />
                 </div>
                 <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Students Trained</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-secondary dark:text-white">
-                  <Counter value="50" suffix="+" />
+                  <Counter value="30" suffix="+" />
                 </div>
                 <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Real Projects</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-secondary dark:text-white">
-                  <Counter value="20" suffix="+" />
+                  <Counter value="15" suffix="+" />
                 </div>
                 <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Tech Courses</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-secondary dark:text-white">
-                  <Counter value="95" suffix="%" />
+                  <Counter value="75" suffix="%" />
                 </div>
                 <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Satisfaction</div>
               </div>
@@ -154,7 +168,7 @@ export default function Hero() {
             ))}
 
             {/* Main Hero Illustration with frame */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
               className="relative w-[320px] sm:w-[420px] aspect-square rounded-[28px] overflow-hidden shadow-2xl border border-white/20 dark:border-white/10 glass z-10"
