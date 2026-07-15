@@ -14,7 +14,6 @@ import Home from './pages/Home';
 import CoursesPage from './pages/CoursesPage';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
-import FAQPage from './pages/FAQPage';
 import ContactPage from './pages/ContactPage';
 
 export default function App() {
@@ -42,7 +41,6 @@ export default function App() {
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/faq" element={<FAQPage />} />
             <Route path="/contact" element={<ContactPage />} />
             
             {/* Fallback routing */}

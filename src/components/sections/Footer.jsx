@@ -133,12 +133,6 @@ export default function Footer() {
                   Services
                 </Link>
               </li>
-
-              <li>
-                <Link to="/faq" className="hover:text-white transition-colors">
-                  FAQ
-                </Link>
-              </li>
               <li>
                 <Link to="/contact" className="hover:text-white transition-colors">
                   Contact
