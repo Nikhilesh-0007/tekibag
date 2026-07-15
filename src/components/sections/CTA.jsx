@@ -1,25 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sparkles, Calendar, ArrowRight } from 'lucide-react';
 
 export default function CTA() {
-  const handleClick = (e, href) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
     <section className="relative py-20 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -54,22 +38,20 @@ export default function CTA() {
 
           {/* CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#courses"
-              onClick={(e) => handleClick(e, '#courses')}
+            <Link
+              to="/courses"
               className="inline-flex items-center gap-2 px-7 py-4 bg-white text-primary hover:text-primary/95 text-base font-bold rounded-tekibag shadow-lg transition-transform hover:-translate-y-0.5"
             >
               Enroll Today
               <ArrowRight size={18} />
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => handleClick(e, '#contact')}
+            </Link>
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base font-bold rounded-tekibag transition-colors"
             >
               <Calendar size={18} />
               Talk to Mentor
-            </a>
+            </Link>
           </div>
 
         </motion.div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
-import { Menu, X, Sun, Moon, PhoneCall, ArrowRight } from 'lucide-react';
+import { Menu, X, PhoneCall, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -69,14 +69,7 @@ export default function Navbar() {
 
           {/* Right Side Buttons & Dark/Light Mode */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors border border-black/5 dark:border-white/5 cursor-pointer"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+
 
             {/* Talk to Mentor (Secondary) */}
             <Link
@@ -99,14 +92,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu & Theme buttons */}
+          {/* Mobile Menu */}
           <div className="flex items-center gap-3 lg:hidden">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
 
             <button
               onClick={() => setIsOpen(!isOpen)}

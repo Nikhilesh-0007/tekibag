@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen, Star, Play, Code2 } from 'lucide-react';
 
@@ -93,19 +94,13 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#courses"
+              <Link
+                to="/courses"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-primary hover:bg-primary/95 rounded-tekibag transition-all duration-300 shadow-premium hover:shadow-premium-hover hover:-translate-y-0.5"
               >
-                Enroll Now
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href="#courses"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 rounded-tekibag transition-all duration-300"
-              >
                 Explore Courses
-              </a>
+                <ArrowRight size={18} />
+              </Link>
             </div>
 
             {/* Stats */}

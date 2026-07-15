@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-/* Enable class-based dark mode toggling in Tailwind v4 */
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   --color-primary: #00205B;      /* TEKIBAG Navy Blue from logo */
-  --color-secondary: #0A0F1D;    /* Premium Deep Navy dark background */
+  --color-secondary: #0A0F1D;    /* Secondary base colour */
   --color-accent: #C59B27;       /* TEKIBAG Gold from logo */
   
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -70,27 +67,12 @@ body {
   background: rgba(0, 32, 91, 0.4);
 }
 
-/* Dark Mode specific overrides */
-.dark ::-webkit-scrollbar-thumb {
-  background: rgba(197, 155, 39, 0.2);
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(197, 155, 39, 0.4);
-}
-
 /* Glassmorphism utility */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.dark .glass {
-  background: rgba(10, 15, 29, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Custom glow utility */
@@ -108,18 +90,8 @@ body {
   transition: width 0.3s ease, height 0.3s ease;
 }
 
-.dark .glow-cursor {
-  background: radial-gradient(circle, rgba(197, 155, 39, 0.12) 0%, rgba(0, 32, 91, 0.03) 60%, transparent 100%);
-}
-
 .text-gradient {
   background: linear-gradient(135deg, #00205B 0%, #C59B27 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark .text-gradient {
-  background: linear-gradient(135deg, #3B82F6 0%, #C59B27 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

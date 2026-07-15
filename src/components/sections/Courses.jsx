@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Clock, Award, Star, ArrowRight, ArrowUpRight } from 'lucide-react';
 
@@ -416,13 +417,13 @@ export default function Courses() {
                 </div>
 
                 {/* CTA Action button */}
-                <a
-                  href="#contact"
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-800 group-hover:border-primary dark:group-hover:border-accent group-hover:bg-primary dark:group-hover:bg-accent group-hover:text-white transition-all duration-300 text-slate-700 dark:text-slate-350"
+                <Link
+                  to="/contact"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-800 group-hover:border-primary dark:group-hover:border-accent group-hover:bg-primary dark:group-hover:bg-accent group-hover:text-white transition-all duration-300 text-slate-700 dark:text-slate-355"
                 >
                   Enroll Now
                   <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
+                </Link>
               </motion.div>
             ))}
           </AnimatePresence>
