@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Star, Play, Code2 } from 'lucide-react';
+import { ArrowRight, Play, Code2 } from 'lucide-react';
 
 // Counter component for animated stats that start from 0 and end at the exact same time
 function Counter({ value, suffix = '', duration = 2000 }) {
@@ -22,7 +22,7 @@ function Counter({ value, suffix = '', duration = 2000 }) {
     const updateCount = (timestamp) => {
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
+
       const currentCount = Math.floor(progress * end);
       setCount(currentCount);
 
@@ -42,16 +42,6 @@ function Counter({ value, suffix = '', duration = 2000 }) {
 }
 
 export default function Hero() {
-  const floatingIcons = [
-    { name: 'React', color: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20', x: '10%', y: '15%', delay: 0 },
-    { name: 'Python', color: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20', x: '75%', y: '10%', delay: 1 },
-    { name: 'AWS', color: 'text-orange-400 bg-orange-400/10 border-orange-400/20', x: '85%', y: '45%', delay: 0.5 },
-    { name: 'Docker', color: 'text-blue-500 bg-blue-500/10 border-blue-500/20', x: '15%', y: '75%', delay: 1.5 },
-    { name: 'Node.js', color: 'text-green-500 bg-green-500/10 border-green-500/20', x: '5%', y: '45%', delay: 2 },
-    { name: 'MongoDB', color: 'text-green-600 bg-green-600/10 border-green-600/20', x: '45%', y: '85%', delay: 0.8 },
-    { name: 'Java', color: 'text-red-500 bg-red-500/10 border-red-500/20', x: '80%', y: '80%', delay: 1.2 },
-    { name: 'GitHub', color: 'text-slate-400 bg-slate-400/10 border-slate-400/20', x: '45%', y: '5%', delay: 2.2 },
-  ];
 
   return (
     <section id="home" className="relative min-h-screen pt-24 pb-16 flex items-center overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
@@ -142,25 +132,7 @@ export default function Hero() {
             {/* Glowing background blob behind the picture */}
             <div className="absolute w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] bg-primary/20 dark:bg-accent/15 rounded-full blur-[60px] md:blur-[80px]" />
 
-            {/* Tech badges floating */}
-            {floatingIcons.map((icon, idx) => (
-              <motion.div
-                key={idx}
-                animate={{
-                  y: [0, -12, 0],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 4 + idx,
-                  ease: 'easeInOut',
-                  delay: icon.delay,
-                }}
-                style={{ left: icon.x, top: icon.y }}
-                className={`absolute px-3 py-1.5 rounded-full text-xs font-semibold border ${icon.color} shadow-lg z-20 hidden sm:block backdrop-blur-sm`}
-              >
-                {icon.name}
-              </motion.div>
-            ))}
+
 
             {/* Main Hero Illustration with frame */}
             <motion.div
