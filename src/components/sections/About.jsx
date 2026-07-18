@@ -42,13 +42,13 @@ export default function About() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
@@ -94,7 +94,7 @@ export default function About() {
             </div>
 
             {/* Accent Highlight Banner */}
-            <div className="p-5 bg-gradient-to-r from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 border-l-4 border-primary dark:border-accent rounded-r-tekibag">
+            <div className="p-5 bg-gradient-to-r from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 border-l-4 border-primary dark:border-accent rounded-r-tekibag shadow-sm">
               <p className="text-sm italic font-medium text-slate-800 dark:text-slate-200">
                 "Bag your skills, build your future. We are not just a learning platform; we are your partner in career acceleration."
               </p>
@@ -115,21 +115,24 @@ export default function About() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="p-6 bg-white dark:bg-slate-950/40 rounded-tekibag shadow-premium border border-slate-100 dark:border-slate-800/80 transition-shadow duration-300 hover:shadow-premium-hover flex flex-col text-left group"
+                  whileHover={{ y: -6 }}
+                  className="p-6 sm:p-8 bg-slate-50 dark:bg-slate-950/40 rounded-tekibag shadow-premium border border-slate-200/50 dark:border-slate-850 transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 hover:shadow-premium-hover flex flex-col text-left group relative overflow-hidden"
                 >
+                  {/* Subtle hover background glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
                   {/* Icon Wrapper */}
-                  <div className={`w-12 h-12 rounded-2xl ${item.bgColor} flex items-center justify-center mb-5 transition-transform duration-500 group-hover:rotate-12`}>
+                  <div className={`w-12 h-12 rounded-2xl ${item.bgColor} flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-6 border border-slate-100 dark:border-slate-800 shadow-sm relative z-10`}>
                     <IconComponent className={`w-6 h-6 ${item.textColor}`} />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-secondary dark:text-white mb-2">
+                  <h3 className="text-lg font-bold text-secondary dark:text-white mb-2 relative z-10 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200">
                     {item.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <p className="text-sm text-slate-550 dark:text-slate-400 leading-relaxed relative z-10">
                     {item.description}
                   </p>
                 </motion.div>

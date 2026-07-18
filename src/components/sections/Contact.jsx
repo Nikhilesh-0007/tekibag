@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
 
 export default function Contact() {
   const location = useLocation();
@@ -320,7 +320,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-tekibag text-sm font-semibold text-white bg-primary hover:bg-primary/95 disabled:bg-slate-400 dark:disabled:bg-slate-800 transition-colors shadow-premium cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-tekibag text-sm font-semibold text-white bg-primary hover:bg-primary/95 disabled:bg-slate-400 dark:disabled:bg-slate-800 transition-all duration-350 active:scale-[0.98] shadow-premium cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>

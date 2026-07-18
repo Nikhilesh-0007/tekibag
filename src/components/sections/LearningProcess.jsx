@@ -120,15 +120,15 @@ export default function LearningProcess() {
               >
                 {/* Connecting Arrow for desktop */}
                 {idx < steps.length - 1 && (
-                  <div className="absolute top-[32px] right-[-10px] text-slate-300 dark:text-slate-700 font-bold text-lg select-none pointer-events-none">
+                  <div className="absolute top-[32px] right-[-10px] text-slate-350 dark:text-slate-700 font-bold text-lg select-none pointer-events-none">
                     →
                   </div>
                 )}
 
                 {/* Step Circle with Icon */}
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className={`w-20 h-20 rounded-2xl ${step.bgColor} border-2 border-white dark:border-slate-900 shadow-md flex items-center justify-center mb-6 relative z-10 transition-shadow duration-300 group-hover:shadow-lg`}
+                  whileHover={{ scale: 1.08, rotate: 5 }}
+                  className={`w-20 h-20 rounded-2xl ${step.bgColor} border border-slate-200/60 dark:border-slate-800 shadow-premium flex items-center justify-center mb-6 relative z-10 transition-all duration-300 group-hover:shadow-premium-hover hover:bg-white dark:hover:bg-slate-900`}
                 >
                   <IconComponent className={`w-8 h-8 ${step.textColor}`} />
                   <span className={`absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full bg-gradient-to-r ${step.color} text-white text-xs font-bold flex items-center justify-center shadow-sm`}>
@@ -140,7 +140,7 @@ export default function LearningProcess() {
                 <h3 className="text-base font-bold text-secondary dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-accent transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 text-center max-w-[160px] leading-relaxed">
+                <p className="text-xs text-slate-550 dark:text-slate-400 text-center max-w-[160px] leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
@@ -165,22 +165,25 @@ export default function LearningProcess() {
                 className="relative pl-8 group"
               >
                 {/* timeline dot */}
-                <div className="absolute left-[-35px] top-1.5 flex items-center justify-center">
-                  <div className={`w-8 h-8 rounded-lg ${step.bgColor} border border-slate-200 dark:border-slate-800 text-xs font-bold flex items-center justify-center ${step.textColor} shadow-sm group-hover:scale-110 transition-transform`}>
+                <div className="absolute left-[-38px] top-2 flex items-center justify-center">
+                  <div className={`w-8 h-8 rounded-lg ${step.bgColor} border border-slate-200 dark:border-slate-850 text-xs font-bold flex items-center justify-center ${step.textColor} shadow-sm group-hover:scale-110 transition-all duration-300`}>
                     {step.num}
                   </div>
                 </div>
 
                 {/* content card */}
-                <div className="p-5 bg-white dark:bg-slate-900/60 rounded-tekibag border border-slate-100 dark:border-slate-800/80 shadow-sm flex items-start gap-4">
-                  <div className={`p-2.5 rounded-xl ${step.bgColor} flex-shrink-0`}>
+                <div className="p-5 bg-slate-50 dark:bg-slate-950/40 rounded-tekibag border border-slate-200/50 dark:border-slate-850 shadow-premium flex items-start gap-4 hover:bg-white dark:hover:bg-slate-900 transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-0.5 group relative overflow-hidden">
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                  <div className={`p-2.5 rounded-xl ${step.bgColor} flex-shrink-0 relative z-10 border border-slate-100 dark:border-slate-800/80 shadow-sm`}>
                     <IconComponent className={`w-5 h-5 ${step.textColor}`} />
                   </div>
-                  <div>
-                    <h3 className="text-base font-bold text-secondary dark:text-white mb-1">
+                  <div className="relative z-10">
+                    <h3 className="text-base font-bold text-secondary dark:text-white mb-1 group-hover:text-primary dark:group-hover:text-accent transition-colors">
                       {step.title}
                     </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    <p className="text-xs text-slate-550 dark:text-slate-400 leading-relaxed">
                       {step.description}
                     </p>
                   </div>

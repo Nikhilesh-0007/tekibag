@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Clock, Award, Star, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { Search, Clock, Award, Star, ArrowUpRight } from 'lucide-react';
 
 // Dynamic Tech Logo Component to render high-fidelity custom SVGs
 function TechLogo({ name }) {
@@ -326,10 +326,10 @@ export default function Courses() {
           <span className="text-xs font-bold uppercase tracking-wider text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 px-3.5 py-1.5 rounded-full">
             Our Catalog
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary dark:text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary dark:text-white leading-tight mt-2">
             Explore Our Industry-Leading Programs
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-base sm:text-lg text-slate-550 dark:text-slate-400">
             Select a specialized course tailored to build the skills you need for real engineering careers.
           </p>
         </div>
@@ -342,10 +342,10 @@ export default function Courses() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all duration-300 whitespace-nowrap ${
+                className={`px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 whitespace-nowrap cursor-pointer ${
                   selectedCategory === category
                     ? 'bg-white dark:bg-slate-800 text-primary dark:text-accent shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-secondary dark:hover:text-white'
+                    : 'text-slate-500 dark:text-slate-450 hover:text-secondary dark:hover:text-white'
                 }`}
               >
                 {category}
@@ -374,7 +374,7 @@ export default function Courses() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredCourses.map((course, idx) => (
+            {filteredCourses.map((course) => (
               <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -382,49 +382,56 @@ export default function Courses() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 key={course.title}
-                whileHover={{ y: -8 }}
-                className="p-6 bg-white dark:bg-slate-950/40 rounded-tekibag border border-slate-100 dark:border-slate-800/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col text-left group"
+                whileHover={{ y: -6 }}
+                className="p-6 bg-slate-50 dark:bg-slate-950/40 rounded-tekibag border border-slate-200/50 dark:border-slate-850 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col justify-between text-left group hover:bg-white dark:hover:bg-slate-900 relative overflow-hidden"
               >
-                {/* Logo & Category Tags */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="p-2.5 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800">
-                    <TechLogo name={course.title} />
+                {/* Accent hover glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                <div>
+                  {/* Logo & Category Tags */}
+                  <div className="flex items-center justify-between mb-5 relative z-10">
+                    <div className="p-2.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                      <TechLogo name={course.title} />
+                    </div>
+                    <span className={`px-2.5 py-1 rounded-full text-3xs font-extrabold tracking-wide uppercase ${course.tagColor}`}>
+                      {course.category}
+                    </span>
                   </div>
-                  <span className={`px-2.5 py-1 rounded-full text-2xs font-extrabold tracking-wide uppercase ${course.tagColor}`}>
-                    {course.category}
-                  </span>
+
+                  {/* Title */}
+                  <h3 className="text-base sm:text-lg font-bold text-secondary dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200 mb-3 relative z-10">
+                    {course.title}
+                  </h3>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-base sm:text-lg font-bold text-secondary dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200 mb-2 flex items-start gap-1">
-                  {course.title}
-                </h3>
+                <div className="relative z-10">
+                  {/* Level Tag & Ratings */}
+                  <div className="flex items-center gap-4 text-xs text-slate-550 dark:text-slate-400 mb-5 mt-auto border-t border-slate-100 dark:border-slate-850 pt-4">
+                    <span className="flex items-center gap-1 font-medium">
+                      <Clock size={14} className="text-slate-400" />
+                      {course.duration}
+                    </span>
+                    <span className="flex items-center gap-1 font-medium">
+                      <Award size={14} className="text-slate-400" />
+                      {course.level}
+                    </span>
+                    <span className="flex items-center gap-1 ml-auto font-bold text-slate-700 dark:text-slate-200">
+                      <Star size={14} className="text-amber-500 fill-amber-500" />
+                      {course.rating}
+                    </span>
+                  </div>
 
-                {/* Level Tag & Ratings */}
-                <div className="flex items-center gap-4 text-xs text-slate-550 dark:text-slate-400 mb-6 mt-auto">
-                  <span className="flex items-center gap-1">
-                    <Clock size={14} className="text-slate-400" />
-                    {course.duration}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Award size={14} className="text-slate-400" />
-                    {course.level}
-                  </span>
-                  <span className="flex items-center gap-1 ml-auto font-semibold text-slate-700 dark:text-slate-200">
-                    <Star size={14} className="text-amber-500 fill-amber-500" />
-                    {course.rating}
-                  </span>
+                  {/* CTA Action button */}
+                  <Link
+                    to="/contact"
+                    state={{ selectedCourse: course.title }}
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-800 group-hover:border-primary dark:group-hover:border-accent group-hover:bg-primary dark:group-hover:bg-accent group-hover:text-white transition-all duration-300 text-slate-700 dark:text-slate-355 active:scale-95 duration-200 cursor-pointer"
+                  >
+                    Enroll Now
+                    <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </Link>
                 </div>
-
-                {/* CTA Action button */}
-                <Link
-                  to="/contact"
-                  state={{ selectedCourse: course.title }}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold border border-slate-200 dark:border-slate-800 group-hover:border-primary dark:group-hover:border-accent group-hover:bg-primary dark:group-hover:bg-accent group-hover:text-white transition-all duration-300 text-slate-700 dark:text-slate-355"
-                >
-                  Enroll Now
-                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Link>
               </motion.div>
             ))}
           </AnimatePresence>

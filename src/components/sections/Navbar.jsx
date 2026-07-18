@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
-import { Menu, X, PhoneCall, ArrowRight } from 'lucide-react';
+import { Menu, X, PhoneCall, ArrowRight, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeContext } from '../../context/ThemeContextBase';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -22,7 +35,11 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-40 py-3 bg-white/80 dark:bg-secondary/80 shadow-premium border-b border-black/5 dark:border-white/5 backdrop-blur-md transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
+        isScrolled
+          ? 'bg-white/90 dark:bg-secondary/90 shadow-premium border-slate-200/50 dark:border-slate-800/80 backdrop-blur-md py-3'
+          : 'bg-transparent border-transparent py-5'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -64,23 +81,30 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right Side Buttons & Dark/Light Mode */}
+          {/* Right Side Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-tekibag bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent transition-all duration-200 cursor-pointer active:scale-95 border border-slate-200/40 dark:border-slate-700"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
 
-
-            {/* Talk to Mentor (Secondary) */}
-            <Link
-              to="/contact"
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-slate-750 dark:text-slate-200 hover:text-primary dark:hover:text-accent transition-colors border border-slate-300 dark:border-slate-700 hover:border-primary dark:hover:border-accent rounded-tekibag"
+            {/* Talk to Mentor */}
+            <a
+              href="tel:+916302284725"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold text-slate-750 dark:text-slate-200 hover:text-white hover:bg-primary dark:hover:bg-accent hover:border-primary dark:hover:border-accent transition-all border border-slate-300 dark:border-slate-750 rounded-tekibag active:scale-95 duration-200"
             >
               <PhoneCall size={14} />
               Talk to Mentor
-            </Link>
+            </a>
 
-            {/* Enroll Now (Primary) */}
+            {/* Enroll Now */}
             <Link
               to="/courses"
-              className="relative px-5 py-2 text-sm font-bold text-white bg-primary rounded-tekibag overflow-hidden group shadow-premium hover:shadow-premium-hover transition-all duration-300 hover:-translate-y-0.5"
+              className="relative px-5 py-2 text-sm font-bold text-white bg-primary rounded-tekibag overflow-hidden group shadow-premium hover:shadow-premium-hover transition-all duration-300 hover:-translate-y-0.5 active:scale-95"
             >
               <span className="relative z-10 flex items-center gap-1">
                 Enroll Now <ArrowRight size={14} />
@@ -89,8 +113,16 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu Actions */}
           <div className="flex items-center gap-3 lg:hidden">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-tekibag bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent transition-all duration-200 cursor-pointer active:scale-95 border border-slate-200/40 dark:border-slate-700"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -130,17 +162,17 @@ export default function Navbar() {
                 );
               })}
               <div className="pt-4 flex flex-col gap-3 px-3">
-                <Link
-                  to="/contact"
+                <a
+                  href="tel:+916302284725"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 py-3 text-center text-sm font-bold text-slate-750 dark:text-slate-200 border border-slate-300 dark:border-slate-700 rounded-tekibag"
+                  className="flex items-center justify-center gap-2 py-3 text-center text-sm font-bold text-slate-750 dark:text-slate-200 border border-slate-300 dark:border-slate-700 rounded-tekibag active:scale-95 duration-200"
                 >
                   <PhoneCall size={16} /> Talk to Mentor
-                </Link>
+                </a>
                 <Link
                   to="/courses"
                   onClick={() => setIsOpen(false)}
-                  className="py-3 text-center text-sm font-bold text-white bg-primary rounded-tekibag shadow-md"
+                  className="py-3 text-center text-sm font-bold text-white bg-primary rounded-tekibag shadow-md active:scale-95 duration-200"
                 >
                   Enroll Now
                 </Link>

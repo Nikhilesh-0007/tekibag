@@ -1,17 +1,25 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-
-const ThemeContext = createContext();
+import React, { useState, useEffect } from 'react';
+import { ThemeContext } from './ThemeContextBase';
 
 export function ThemeProvider({ children }) {
-  const theme = 'light';
-  
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('tekibag-theme');
+    if (saved) return saved;
+    return 'light'; // Default to light mode
+  });
+
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('dark');
-  }, []);
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('tekibag-theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
-    // Permanently disabled dark mode
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (
@@ -19,12 +27,4 @@ export function ThemeProvider({ children }) {
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
 }

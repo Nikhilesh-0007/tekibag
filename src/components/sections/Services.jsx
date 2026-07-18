@@ -132,7 +132,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="relative py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <section id="services" className="relative py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       
       {/* Visual background details */}
       <div className="absolute left-[-10%] top-[30%] w-[35vw] h-[35vw] rounded-full bg-primary/5 dark:bg-primary/10 blur-[100px] pointer-events-none" />
@@ -145,10 +145,10 @@ export default function Services() {
           <span className="text-xs font-bold uppercase tracking-wider text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 px-3.5 py-1.5 rounded-full">
             Our Offerings
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary dark:text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary dark:text-white leading-tight mt-2">
             Comprehensive Services to Fuel Your Tech Growth
           </h2>
-          <p className="text-base sm:text-lg text-slate-650 dark:text-slate-400">
+          <p className="text-base sm:text-lg text-slate-550 dark:text-slate-400">
             We provide everything you need to transform from an absolute beginner into a job-ready software engineer.
           </p>
         </div>
@@ -168,21 +168,24 @@ export default function Services() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover={{ y: -6, scale: 1.01 }}
-                className="p-6 sm:p-8 bg-white dark:bg-slate-900/60 rounded-tekibag shadow-premium border border-slate-150/50 dark:border-slate-800/80 transition-all duration-300 hover:shadow-premium-hover flex flex-col items-start text-left group"
+                whileHover={{ y: -6 }}
+                className="p-6 sm:p-8 bg-slate-50 dark:bg-slate-950/40 rounded-tekibag border border-slate-200/50 dark:border-slate-850 shadow-premium hover:shadow-premium-hover transition-all duration-300 hover:bg-white dark:hover:bg-slate-900 flex flex-col items-start text-left group relative overflow-hidden"
               >
+                {/* Accent glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
                 {/* Icon wrapper */}
-                <div className={`w-12 h-12 rounded-2xl ${service.bgColor} flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6`}>
+                <div className={`w-12 h-12 rounded-2xl ${service.bgColor} flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-6 border border-slate-100 dark:border-slate-800 shadow-sm relative z-10`}>
                   <IconComponent className={`w-6 h-6 ${iconColor}`} />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-secondary dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200">
+                <h3 className="text-lg font-bold text-secondary dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200 relative z-10">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-550 dark:text-slate-400 leading-relaxed relative z-10">
                   {service.description}
                 </p>
               </motion.div>

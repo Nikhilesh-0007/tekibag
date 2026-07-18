@@ -10,22 +10,17 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const TwitterIcon = () => (
+const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 
-const GitHubIcon = () => (
+const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-  </svg>
-);
-
-const YouTubeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 
@@ -71,45 +66,36 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Tekibag is an innovative EdTech startup dedicated to transforming the way students learn software technologies. Bag your skills, build your future.
+              Tekibag is an EdTech startup dedicated to transforming the way students learn software technologies. BAG YOUR SKILLS. BUILD YOUR FUTURE.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/tekibag/"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-colors text-slate-300"
+                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-all duration-200 text-slate-300 active:scale-95 shadow-sm"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.facebook.com/share/1JrQAnWVao/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-colors text-slate-300"
-                aria-label="Twitter"
+                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-all duration-200 text-slate-300 active:scale-95 shadow-sm"
+                aria-label="Facebook"
               >
-                <TwitterIcon />
+                <FacebookIcon />
               </a>
               <a
-                href="https://github.com"
+                href="https://www.instagram.com/tekibagofficial?igsh=MW5naXdzbnl0ZTlsZw%3D%3D&utm_source=qr"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-colors text-slate-300"
-                aria-label="GitHub"
+                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-all duration-200 text-slate-300 active:scale-95 shadow-sm"
+                aria-label="Instagram"
               >
-                <GitHubIcon />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-colors text-slate-300"
-                aria-label="YouTube"
-              >
-                <YouTubeIcon />
+                <InstagramIcon />
               </a>
             </div>
           </div>
@@ -121,28 +107,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/" className="hover:text-white transition-colors">
+                <Link to="/" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-white transition-colors">
+                <Link to="/about" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Services
                 </Link>
               </li>
-
               <li>
-                <Link to="/faq" className="hover:text-white transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white transition-colors">
+                <Link to="/contact" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Contact
                 </Link>
               </li>
@@ -156,27 +136,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/courses" className="hover:text-white transition-colors">
+                <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Full Stack Development
                 </Link>
               </li>
               <li>
-                <Link to="/courses" className="hover:text-white transition-colors">
+                <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Java Development
                 </Link>
               </li>
               <li>
-                <Link to="/courses" className="hover:text-white transition-colors">
+                <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Python Programming
                 </Link>
               </li>
               <li>
-                <Link to="/courses" className="hover:text-white transition-colors">
+                <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   AWS Cloud & DevOps
                 </Link>
               </li>
               <li>
-                <Link to="/courses" className="hover:text-white transition-colors">
+                <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Artificial Intelligence
                 </Link>
               </li>
@@ -190,27 +170,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Live Online Classes
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Industry Mentorship
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Placement Assistance
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Resume & LinkedIn Prep
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
+                <Link to="/services" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
                   Mock Interview Rounds
                 </Link>
               </li>
@@ -247,7 +227,7 @@ export default function Footer() {
         {/* Footer Bottom Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-slate-550 gap-4">
           <div>
-            © {currentYear} TEKIBAG. All rights reserved. Brand Slogan: "Bag Your Skills. Build Your Future."
+            © {currentYear} TEKIBAG. All rights reserved. Brand Slogan: "BAG YOUR SKILLS. BUILD YOUR FUTURE."
           </div>
           <div className="flex items-center gap-6">
             <Link to="/" className="hover:text-slate-350 transition-colors">Privacy Policy</Link>

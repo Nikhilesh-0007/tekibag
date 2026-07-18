@@ -40,18 +40,18 @@ export default function CTA() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/courses"
-              className="inline-flex items-center gap-2 px-7 py-4 bg-white text-primary hover:text-primary/95 text-base font-bold rounded-tekibag shadow-lg transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-white text-primary hover:text-primary/95 text-base font-bold rounded-tekibag shadow-lg transition-transform hover:-translate-y-0.5 active:scale-95 duration-200"
             >
               Enroll Today
               <ArrowRight size={18} />
             </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base font-bold rounded-tekibag transition-colors"
+            <a
+              href="tel:+916302284725"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base font-bold rounded-tekibag transition-colors active:scale-95 duration-200"
             >
               <Calendar size={18} />
               Talk to Mentor
-            </Link>
+            </a>
           </div>
 
         </motion.div>

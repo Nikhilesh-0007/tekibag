@@ -25,17 +25,17 @@ export default function MissionVision() {
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-blue-600" />
             
             {/* Icon */}
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 transition-transform duration-500 group-hover:scale-110">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-6 border border-slate-100 dark:border-slate-850 shadow-sm">
               <Target size={24} />
             </div>
 
             {/* Title */}
-            <h3 className="text-xl sm:text-2xl font-extrabold text-secondary dark:text-white mb-4">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-secondary dark:text-white mb-4 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200">
               Our Mission
             </h3>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-350 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-550 dark:text-slate-400 leading-relaxed">
               To provide practical, industry-focused online software training that empowers learners with the skills, confidence, and real-world experience needed to build successful technology careers.
             </p>
           </motion.div>
@@ -53,17 +53,17 @@ export default function MissionVision() {
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accent to-emerald-500" />
             
             {/* Icon */}
-            <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6 transition-transform duration-500 group-hover:scale-110">
+            <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-6 border border-slate-100 dark:border-slate-850 shadow-sm">
               <Eye size={24} />
             </div>
 
             {/* Title */}
-            <h3 className="text-xl sm:text-2xl font-extrabold text-secondary dark:text-white mb-4">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-secondary dark:text-white mb-4 group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
               Our Vision
             </h3>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-350 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-550 dark:text-slate-400 leading-relaxed">
               To become a trusted global EdTech startup that transforms learners into industry-ready professionals through quality education, innovation, and continuous mentorship.
             </p>
           </motion.div>
