@@ -156,13 +156,13 @@ export default function Hero() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="absolute bottom-4 right-0 sm:right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-3 rounded-tekibag shadow-premium border border-slate-100 dark:border-slate-800 z-20 flex items-center gap-3 hover:-translate-y-0.5 transition-transform duration-300"
+              className="absolute bottom-4 right-0 sm:right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-3 rounded-tekibag shadow-premium border border-slate-100 dark:border-slate-800 z-20 hidden sm:flex items-center gap-3 hover:-translate-y-0.5 transition-transform duration-300"
             >
               <div className="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center text-accent flex-shrink-0">
                 <Play fill="currentColor" size={14} />
               </div>
               <div className="text-left">
-                <div className="text-3xs text-slate-500 font-bold uppercase tracking-wider">Live Classes</div>
+                <div className="text-3xs text-slate-550 font-bold uppercase tracking-wider">Live Classes</div>
                 <div className="text-xs font-extrabold text-slate-800 dark:text-white mt-0.5">Daily Interactive Sessions</div>
               </div>
             </motion.div>
@@ -172,7 +172,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="absolute top-8 left-0 sm:left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-3 rounded-tekibag shadow-premium border border-slate-100 dark:border-slate-800 z-20 flex items-center gap-3 hover:-translate-y-0.5 transition-transform duration-300"
+              className="absolute top-8 left-0 sm:left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-4 py-3 rounded-tekibag shadow-premium border border-slate-100 dark:border-slate-800 z-20 hidden sm:flex items-center gap-3 hover:-translate-y-0.5 transition-transform duration-300"
             >
               <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
                 <Code2 size={16} />
