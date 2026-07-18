@@ -80,7 +80,7 @@ export default function Footer() {
                 <LinkedInIcon />
               </a>
               <a
-                href="https://www.facebook.com/share/1JrQAnWVao/?mibextid=wwXIfr"
+                href="https://www.facebook.com/tekibag"
                 target="_blank"
                 rel="noreferrer"
                 className="p-2.5 rounded-xl bg-slate-800 hover:bg-primary hover:text-white transition-all duration-200 text-slate-300 active:scale-95 shadow-sm"
