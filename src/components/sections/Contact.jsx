@@ -86,18 +86,18 @@ export default function Contact() {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
-      
+
       // WhatsApp Redirect
       let whatsappText = `Hello TEKIBAG! I would like to make an inquiry.\n\n` +
         `*Name:* ${formData.name}\n` +
         `*Email:* ${formData.email}\n` +
         `*Phone:* ${formData.phone}\n` +
         `*Course:* ${formData.course}`;
-      
+
       if (formData.message && formData.message.trim()) {
         whatsappText += `\n*Message:* ${formData.message}`;
       }
-      
+
       const encodedText = encodeURIComponent(whatsappText);
       const whatsappUrl = `https://wa.me/917793972779?text=${encodedText}`;
       window.open(whatsappUrl, '_blank');
@@ -190,26 +190,7 @@ export default function Contact() {
             </div>
 
             {/* Business Hours */}
-            <div className="p-5 bg-white dark:bg-slate-950 border border-slate-150/50 dark:border-slate-850 rounded-2xl text-left space-y-4 shadow-sm">
-              <div className="flex items-center gap-2 text-primary dark:text-accent font-bold text-sm">
-                <Clock size={16} />
-                <span>Business Hours</span>
-              </div>
-              <div className="space-y-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
-                <div className="flex justify-between">
-                  <span>Monday - Friday</span>
-                  <span className="text-secondary dark:text-white">9 AM - 9 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span className="text-secondary dark:text-white">9 AM - 6 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span className="text-red-500 font-bold">Closed</span>
-                </div>
-              </div>
-            </div>
+
 
           </motion.div>
 

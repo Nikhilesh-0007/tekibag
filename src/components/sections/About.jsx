@@ -58,14 +58,14 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-24 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
-      
+
       {/* Background decoration elements */}
       <div className="absolute right-0 bottom-0 w-80 h-80 rounded-full bg-accent/5 dark:bg-accent/10 blur-[100px] pointer-events-none" />
       <div className="absolute left-0 top-0 w-80 h-80 rounded-full bg-primary/5 dark:bg-primary/10 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Text Block */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -79,11 +79,11 @@ export default function About() {
                 Who We Are
               </span>
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary dark:text-white leading-tight">
               Transforming the Way We Learn Software Skills.
             </h2>
-            
+
             <div className="space-y-4 text-slate-600 dark:text-slate-350">
               <p className="text-base sm:text-lg leading-relaxed">
                 Tekibag is an innovative EdTech startup dedicated to transforming the way students learn software technologies.
@@ -96,7 +96,7 @@ export default function About() {
             {/* Accent Highlight Banner */}
             <div className="p-5 bg-gradient-to-r from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 border-l-4 border-primary dark:border-accent rounded-r-tekibag">
               <p className="text-sm italic font-medium text-slate-800 dark:text-slate-200">
-                "Bag your skills, build your future. We are not just a training center; we are your partner in career acceleration."
+                "Bag your skills, build your future. We are not just a learning platform; we are your partner in career acceleration."
               </p>
             </div>
           </motion.div>
@@ -122,12 +122,12 @@ export default function About() {
                   <div className={`w-12 h-12 rounded-2xl ${item.bgColor} flex items-center justify-center mb-5 transition-transform duration-500 group-hover:rotate-12`}>
                     <IconComponent className={`w-6 h-6 ${item.textColor}`} />
                   </div>
-                  
+
                   {/* Title */}
                   <h3 className="text-lg font-bold text-secondary dark:text-white mb-2">
                     {item.title}
                   </h3>
-                  
+
                   {/* Description */}
                   <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                     {item.description}
@@ -136,7 +136,7 @@ export default function About() {
               );
             })}
           </motion.div>
-          
+
         </div>
       </div>
     </section>
