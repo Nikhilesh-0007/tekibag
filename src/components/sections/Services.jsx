@@ -132,7 +132,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="relative py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="services" className="relative py-24 bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
       
       {/* Visual background details */}
       <div className="absolute left-[-10%] top-[30%] w-[35vw] h-[35vw] rounded-full bg-primary/5 dark:bg-primary/10 blur-[100px] pointer-events-none" />
