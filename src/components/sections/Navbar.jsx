@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, PhoneCall, ArrowRight, Sun, Moon } from 'lucide-react';
+import { Menu, X, PhoneCall, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeContext } from '../../context/ThemeContextBase';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,15 +81,6 @@ export default function Navbar() {
 
           {/* Right Side Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-tekibag bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent transition-all duration-200 cursor-pointer active:scale-95 border border-slate-200/40 dark:border-slate-700"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-
             {/* Talk to Mentor */}
             <a
               href="tel:+916302284725"
@@ -115,15 +104,6 @@ export default function Navbar() {
 
           {/* Mobile Menu Actions */}
           <div className="flex items-center gap-3 lg:hidden">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-tekibag bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent transition-all duration-200 cursor-pointer active:scale-95 border border-slate-200/40 dark:border-slate-700"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
-
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-slate-750 dark:text-slate-300 hover:text-primary dark:hover:text-accent transition-colors"
