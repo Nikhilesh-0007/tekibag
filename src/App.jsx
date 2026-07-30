@@ -35,7 +35,7 @@ export default function App() {
         <Navbar />
 
         {/* Routed Sub-pages content */}
-        <main className="flex-grow relative z-10">
+        <main className="flex-grow relative">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<CoursesPage />} />

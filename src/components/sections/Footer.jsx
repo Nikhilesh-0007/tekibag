@@ -152,27 +152,27 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
-                  Full Stack Development
+                  Gen AI Developer
                 </Link>
               </li>
               <li>
                 <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
-                  Java Development
+                  Full Stack Python with AI Integration
                 </Link>
               </li>
               <li>
                 <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
-                  Python Programming
+                  Full Stack Java with AI Integration
                 </Link>
               </li>
               <li>
                 <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
-                  AWS Cloud & DevOps
+                  Frontend Developer (React.js)
                 </Link>
               </li>
               <li>
                 <Link to="/courses" className="hover:translate-x-1 hover:text-white transition-all duration-300 block">
-                  Artificial Intelligence
+                  Backend Developer (Java/Spring Boot)
                 </Link>
               </li>
             </ul>
