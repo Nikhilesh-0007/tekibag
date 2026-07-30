@@ -287,30 +287,9 @@ export default function Courses() {
         </div>
 
         {/* Search & Category Filter Controls */}
-        <div className="flex flex-col sm:flex-row items-stretch justify-between gap-4 mb-12 w-full">
+        <div className="flex flex-col sm:flex-row items-stretch justify-start gap-4 mb-12 w-full">
           
-          {/* Search bar group at the start */}
-          <div className="flex flex-grow items-stretch w-full sm:w-auto">
-            <div className="relative flex-grow">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <Search size={18} />
-              </span>
-              <input
-                type="text"
-                placeholder="Search courses..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-full pl-10 pr-4 py-2.5 rounded-l-tekibag bg-slate-50 dark:bg-slate-950/40 border border-r-0 border-slate-200 dark:border-slate-850 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent text-sm text-secondary dark:text-white transition-all shadow-sm"
-              />
-            </div>
-            <button
-              className="px-6 py-2.5 rounded-r-tekibag bg-primary hover:bg-primary/95 text-white dark:bg-accent dark:hover:bg-accent/90 dark:text-slate-950 font-bold text-sm transition-all duration-300 shadow-md active:scale-95 flex items-center gap-2 border border-l-0 border-primary/20 dark:border-accent/25 cursor-pointer shrink-0"
-            >
-              Search
-            </button>
-          </div>
-
-          {/* Regular Filter Dropdown Button second */}
+          {/* Regular Filter Dropdown Button first */}
           <div className="relative w-full sm:w-auto shrink-0">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -318,7 +297,7 @@ export default function Courses() {
             >
               <span className="flex items-center gap-2">
                 <Filter size={16} />
-                <span>{selectedCategory === 'All' ? 'Filter Category' : selectedCategory}</span>
+                <span>{selectedCategory === 'All' ? 'Course Filter' : selectedCategory}</span>
               </span>
               <svg
                 className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
@@ -336,7 +315,7 @@ export default function Courses() {
                   className="fixed inset-0 z-40 bg-transparent cursor-default" 
                   onClick={() => setIsDropdownOpen(false)} 
                 />
-                <div className="absolute right-0 mt-2 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 shadow-premium z-50 py-1 overflow-hidden">
+                <div className="absolute left-0 mt-2 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 shadow-premium z-50 py-1 overflow-hidden">
                   {categories.map((category) => (
                     <button
                       key={category}
@@ -356,6 +335,27 @@ export default function Courses() {
                 </div>
               </>
             )}
+          </div>
+
+          {/* Search bar group second */}
+          <div className="flex flex-grow items-stretch w-full sm:max-w-md">
+            <div className="relative flex-grow">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <Search size={18} />
+              </span>
+              <input
+                type="text"
+                placeholder="Search courses..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-full pl-10 pr-4 py-2.5 rounded-l-tekibag bg-slate-50 dark:bg-slate-950/40 border border-r-0 border-slate-200 dark:border-slate-850 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent text-sm text-secondary dark:text-white transition-all shadow-sm"
+              />
+            </div>
+            <button
+              className="px-6 py-2.5 rounded-r-tekibag bg-primary hover:bg-primary/95 text-white dark:bg-accent dark:hover:bg-accent/90 dark:text-slate-950 font-bold text-sm transition-all duration-300 shadow-md active:scale-95 flex items-center gap-2 border border-l-0 border-primary/20 dark:border-accent/25 cursor-pointer shrink-0"
+            >
+              Search
+            </button>
           </div>
         </div>
 
