@@ -242,7 +242,7 @@ export default function Footer() {
         {/* Footer Bottom Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-slate-550 gap-4">
           <div>
-            © {currentYear} TEKIBAG. All rights reserved. Brand Slogan: "BAG YOUR SKILLS. BUILD YOUR FUTURE."
+            © {currentYear} TEKIBAG. All rights reserved. Brand Slogan: "BAG YOUR SKILLS. BUILD YOUR FUTURE." | Developed by <a href="https://www.instagram.com/staffarc?igsh=NGI1ajBjank5aWF3" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors font-medium">StaffArc</a>
           </div>
           <div className="flex items-center gap-6">
             <Link to="/" className="hover:text-slate-350 transition-colors">Privacy Policy</Link>

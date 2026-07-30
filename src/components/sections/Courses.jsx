@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Clock, Award, Star, ArrowUpRight } from 'lucide-react';
+import { Search, Clock, Award, Star, ArrowUpRight, Filter } from 'lucide-react';
 import { categories, coursesList } from '../../data/coursesData';
 
 // Dynamic Tech Logo Component to render high-fidelity custom SVGs
@@ -244,6 +244,7 @@ export default function Courses() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Enable/disable background scrolling when drawer is open
   useEffect(() => {
@@ -265,13 +266,13 @@ export default function Courses() {
 
   return (
     <section id="courses" className="relative py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
-      
+
       {/* Decorative gradient overlays */}
       <div className="absolute right-[5%] top-[10%] w-[30vw] h-[30vw] rounded-full bg-primary/5 dark:bg-primary/5 blur-[120px] pointer-events-none" />
       <div className="absolute left-[5%] bottom-[10%] w-[30vw] h-[30vw] rounded-full bg-accent/5 dark:bg-accent/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header Block */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="text-xs font-bold uppercase tracking-wider text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 px-3.5 py-1.5 rounded-full">
@@ -286,36 +287,75 @@ export default function Courses() {
         </div>
 
         {/* Search & Category Filter Controls */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
-          {/* Categories Tab Bar */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 bg-slate-100 dark:bg-slate-950/60 rounded-2xl border border-slate-200/50 dark:border-slate-800/80 w-full md:w-auto overflow-x-auto">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl transition-all duration-300 whitespace-nowrap cursor-pointer ${
-                  selectedCategory === category
-                    ? 'bg-white dark:bg-slate-800 text-primary dark:text-accent shadow-sm'
-                    : 'text-slate-500 dark:text-slate-450 hover:text-secondary dark:hover:text-white'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+        <div className="flex flex-col sm:flex-row items-stretch justify-between gap-4 mb-12 w-full">
+          
+          {/* Search bar group at the start */}
+          <div className="flex flex-grow items-stretch w-full sm:w-auto">
+            <div className="relative flex-grow">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <Search size={18} />
+              </span>
+              <input
+                type="text"
+                placeholder="Search courses..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-full pl-10 pr-4 py-2.5 rounded-l-tekibag bg-slate-50 dark:bg-slate-950/40 border border-r-0 border-slate-200 dark:border-slate-850 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent text-sm text-secondary dark:text-white transition-all shadow-sm"
+              />
+            </div>
+            <button
+              className="px-6 py-2.5 rounded-r-tekibag bg-primary hover:bg-primary/95 text-white dark:bg-accent dark:hover:bg-accent/90 dark:text-slate-950 font-bold text-sm transition-all duration-300 shadow-md active:scale-95 flex items-center gap-2 border border-l-0 border-primary/20 dark:border-accent/25 cursor-pointer shrink-0"
+            >
+              Search
+            </button>
           </div>
 
-          {/* Search bar */}
-          <div className="relative w-full md:w-80">
-            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-              <Search size={18} />
-            </span>
-            <input
-              type="text"
-              placeholder="Search courses..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-tekibag bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-850 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent text-sm text-secondary dark:text-white transition-all shadow-sm"
-            />
+          {/* Regular Filter Dropdown Button second */}
+          <div className="relative w-full sm:w-auto shrink-0">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center justify-between gap-3 px-5 py-2.5 w-full sm:w-auto rounded-tekibag bg-white dark:bg-slate-900 border border-primary/30 dark:border-accent/40 text-primary dark:text-accent font-bold text-sm transition-all hover:bg-slate-50 dark:hover:bg-slate-850 hover:shadow-premium select-none cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <Filter size={16} />
+                <span>{selectedCategory === 'All' ? 'Filter Category' : selectedCategory}</span>
+              </span>
+              <svg
+                className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {isDropdownOpen && (
+              <>
+                <div 
+                  className="fixed inset-0 z-40 bg-transparent cursor-default" 
+                  onClick={() => setIsDropdownOpen(false)} 
+                />
+                <div className="absolute right-0 mt-2 w-56 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 shadow-premium z-50 py-1 overflow-hidden">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setSelectedCategory(category);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2.5 text-xs sm:text-sm font-semibold transition-colors duration-150 cursor-pointer ${
+                        selectedCategory === category
+                          ? 'bg-primary text-white dark:bg-accent dark:text-slate-950 font-bold'
+                          : 'text-slate-650 dark:text-slate-355 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
 
