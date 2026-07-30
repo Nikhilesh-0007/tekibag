@@ -189,7 +189,7 @@ export default function Contact() {
             Get In Touch With Our Mentors
           </h2>
           <p className="text-base text-slate-550 dark:text-slate-400">
-            Have questions about fees, syllabus, or placement? Shoot us a message or contact us directly.
+            Have questions about fees, course details, or placement? Shoot us a message or contact us directly.
           </p>
         </div>
 

@@ -417,14 +417,14 @@ export default function Courses() {
                   <div className="flex gap-3 relative z-10">
                     <button
                       onClick={() => setSelectedCourse(course)}
-                      className="flex-1 flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-slate-200 dark:border-slate-850 hover:border-primary dark:hover:border-accent hover:text-primary dark:hover:text-accent transition-all duration-300 text-slate-700 dark:text-slate-355 active:scale-95 duration-200 cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-slate-200 dark:border-slate-850 hover:border-primary dark:hover:border-accent hover:text-primary dark:hover:text-accent transition-all duration-300 text-slate-700 dark:text-slate-355 active:scale-95 duration-200 cursor-pointer whitespace-nowrap"
                     >
-                      Syllabus
+                      Course Details
                     </button>
                     <Link
                       to="/contact"
                       state={{ selectedCourse: course.title }}
-                      className="flex-1 flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-primary dark:bg-accent text-white hover:bg-primary/95 dark:hover:bg-accent/95 shadow-sm active:scale-95 transition-all duration-200 cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-primary dark:bg-accent text-white hover:bg-primary/95 dark:hover:bg-accent/95 shadow-sm active:scale-95 transition-all duration-200 cursor-pointer whitespace-nowrap"
                     >
                       Enroll
                       <ArrowUpRight size={14} />
