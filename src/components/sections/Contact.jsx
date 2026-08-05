@@ -153,7 +153,7 @@ export default function Contact() {
       }
 
       const encodedText = encodeURIComponent(whatsappText);
-      const whatsappUrl = `https://wa.me/917793972779?text=${encodedText}`;
+      const whatsappUrl = `https://wa.me/916302284725?text=${encodedText}`;
       window.open(whatsappUrl, '_blank');
 
       setFormData({
